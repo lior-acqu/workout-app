@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- iOS Home Screen Icon -->
+    <link rel="apple-touch-icon" href="app.png">
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workouts</title>
+</head>
+<body>
+    <div class="start-window">
+        <h1 class="title">Choose a Workout</h1>
+        <div class="sel-btns"></div>
+    </div>
+    <div class="main-window">
+        <h1 class="title"></h1>
+        <p id="timer">00:00</p>
+        <p id="currentTask"></p>
+        <p id="reps"></p>
+        <p id="info"></p>
+        <p id="area"></p>
+        <p id="muscleGroup"></p>
+        <button onclick="workout()" id="nextStep">Start</button>
+    </div>
+    <div class="close-window">
+        <h1 class="title">Done! 🕺</h1>
+        <a href="https://liorporath.ch/workouts">Go to Start</a>
+        <a href="https://exchange-traded-habits.vercel.app" target="_blank">Go to Habit Tracker</a>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
