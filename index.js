@@ -245,10 +245,74 @@ const fullbodylior = {
       area: ["Push"],
       muscle: ["Triceps"],
     },
+    "pause",
+    {
+      name: "Wrist Stretch",
+      reps: "Per side 1",
+      info: "With both front and back of hand",
+      area: ["Stretch"],
+      muscle: ["Wrist"],
+    },
+    "pause",
+    {
+      name: "Wrist Push-Up",
+      reps: "Per side 10",
+      info: "Shoulders over wrists, do not use thumb",
+      area: ["Push"],
+      muscle: ["Wrist"],
+    },
   ],
 };
 
-const workoutSelection = [shirleasy, posture, fullbodylior];
+const stretch = {
+  name: "Mobility",
+  duration: 7,
+  difficulty: "Easy",
+  pause: 5,
+  workout: [
+    {
+      name: "Corner Stretch",
+      reps: 1,
+      info: "Stretch your arms out in a corner and make one step inside",
+      area: ["Stretch"],
+      muscle: ["Chest", "Bicep", "Shoulder"],
+    },
+    "pause",
+    {
+      name: "Child's Pose",
+      reps: 1,
+      info: "Reach out arms as far as possible and go back",
+      area: ["Stretch"],
+      muscle: ["Spine", "Upper Back", "Shoulders"],
+    },
+    "pause",
+    {
+      name: "Snake",
+      reps: 1,
+      info: "Arms straight, intensify stretch over time",
+      area: ["Stretch"],
+      muscle: ["Spine", "Chest", "Abs"],
+    },
+    "pause",
+    {
+      name: "Hamstring & Quad Stretch",
+      reps: 1,
+      info: "Difficult to describe, but you know how",
+      area: ["Stretch"],
+      muscle: ["Hamstrings", "Quads"],
+    },
+    "pause",
+    {
+      name: "Spine Twists",
+      reps: "Per side 1",
+      info: "Lie down, reach out with arm, twist",
+      area: ["Stretch"],
+      muscle: ["Spine", "Glutes"],
+    },
+  ],
+};
+
+const workoutSelection = [shirleasy, posture, fullbodylior, stretch];
 
 var chosenWorkout = [];
 var steps = 0;
@@ -303,19 +367,17 @@ async function workout() {
       document.getElementById("currentTask").innerHTML = "Rest";
       document.getElementById("reps").innerHTML =
         nextExercise - time + "s remaining";
-      document.getElementById("muscleGroup").innerHTML =
-        "Next: " +
+      document.getElementById("area").innerHTML =
+        "<span style='font-weight: 600; font-size: 24px; color: #ccc'>Next:</span> " +
         chosenWorkout[steps + 1].name +
         " (" +
         chosenWorkout[steps + 1].info +
         ")";
-      document.getElementById("area").style.display = "none";
       document.getElementById("info").style.display = "none";
       // update only every 100 seconds
       await sleep(100);
     }
     document.getElementById("nextStep").disabled = false;
-    document.getElementById("area").style.display = "block";
     document.getElementById("info").style.display = "block";
     steps++;
     workout();
@@ -327,9 +389,11 @@ async function workout() {
       chosenWorkout[steps].reps + " rep(s)";
     document.getElementById("info").innerHTML = chosenWorkout[steps].info;
     document.getElementById("area").innerHTML =
-      chosenWorkout[steps].area.join(", ");
-    document.getElementById("muscleGroup").innerHTML =
-      chosenWorkout[steps].muscle.join(", ");
+      "<span style='font-weight: 600; font-size: 24px; color: #ccc'>" +
+      chosenWorkout[steps].area.join(", ") +
+      "</span> (" +
+      chosenWorkout[steps].muscle.join(", ") +
+      ")";
     steps++;
   }
 }
